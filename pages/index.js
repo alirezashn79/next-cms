@@ -11,7 +11,7 @@ export const getStaticProps = async (context) => {
 
   const courses = await coursesModel.find({});
 
-  console.log(courses);
+  console.log("courses =>", courses);
 
   return {
     props: {},
