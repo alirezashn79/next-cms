@@ -43,31 +43,16 @@ const AddCourseModal = ({ hideAddCourseModal }) => {
       setInputsData({ title: "", price: "", teacher: "" });
       hideAddCourseModal();
       Swal.fire({
+        title: "دوره مورد نظر ایجاد شد",
+        text: data.data.title,
         icon: "success",
-        title: `دوره ${data.data.title} ایجاد شد✔`,
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 4000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
+        confirmButtonText: "خوبه!",
       });
     } else {
       Swal.fire({
+        title: "خطا!",
         icon: "error",
-        title: data.message,
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 4000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
+        confirmButtonText: "اوکی",
       });
     }
   };
@@ -103,6 +88,7 @@ const AddCourseModal = ({ hideAddCourseModal }) => {
               spellCheck="false"
               required={true}
             />
+            <span style={{ fontSize: "12px", paddingRight: "5px" }}>تومان</span>
           </div>
           <div className={styles.input_field}>
             <span>

@@ -2,7 +2,7 @@ import DeleteModal from "@/components/templates/index/DeleteModal";
 import EditModal from "@/components/templates/index/EditModal";
 import { useState } from "react";
 import styles from "@/styles/Course.module.css";
-const CoursesItem = ({ title, image }) => {
+const CoursesItem = ({ title }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -14,7 +14,7 @@ const CoursesItem = ({ title, image }) => {
       <li className={styles.courses_item}>
         <div className={styles.courses_img_title}>
           <img
-            src={image}
+            src="/images/courses/PWA.jpg"
             alt="course-item-img"
             className={styles.courses_img}
           />
