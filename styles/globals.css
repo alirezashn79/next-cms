@@ -10,7 +10,7 @@ html {
 
 body {
   background-color: #f9f9f9;
-  font-family: 'shabnam';
+  font-family: "shabnam";
   direction: rtl;
 }
 
@@ -20,38 +20,48 @@ body {
   display: flex;
   padding: 4rem 4rem 4rem 2rem;
   min-height: 100vh;
-
 }
- 
+
 .main {
   width: 85%;
   padding-right: 4rem;
 }
- 
+
 @font-face {
-  font-family: 'shabnam';
-  src: url('/fonts/Shabnam-FD.eot')format('eot'),
-    url('/fonts/Shabnam-FD.ttf')format('truetype'),
-    url('/fonts/Shabnam-FD.woff')format('woff')
+  font-family: "shabnam";
+  src: url("/fonts/Shabnam-FD.eot") format("eot"),
+    url("/fonts/Shabnam-FD.ttf") format("truetype"),
+    url("/fonts/Shabnam-FD.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'shabnam-bold';
-  src: url('/fonts/Shabnam-Bold-FD.eot')format('eot'),
-    url('/fonts/Shabnam-Bold-FD.ttf')format('truetype'),
-    url('/fonts/Shabnam-Bold-FD.woff')format('woff')
+  font-family: "shabnam-bold";
+  src: url("/fonts/Shabnam-Bold-FD.eot") format("eot"),
+    url("/fonts/Shabnam-Bold-FD.ttf") format("truetype"),
+    url("/fonts/Shabnam-Bold-FD.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'shabnam-light';
-  src: url('/fonts/Shabnam-Light-FD.eot')format('eot'),
-    url('/fonts/Shabnam-Light-FD.ttf')format('truetype'),
-    url('/fonts/Shabnam-Light-FD.woff')format('woff')
+  font-family: "shabnam-light";
+  src: url("/fonts/Shabnam-Light-FD.eot") format("eot"),
+    url("/fonts/Shabnam-Light-FD.ttf") format("truetype"),
+    url("/fonts/Shabnam-Light-FD.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'shabnam-medium';
-  src: url('/fonts/Shabnam-Medium-FD.eot')format('eot'),
-    url('/fonts/Shabnam-Medium-FD.ttf')format('truetype'),
-    url('/fonts/Shabnam-Medium-FD.woff')format('woff')
+  font-family: "shabnam-medium";
+  src: url("/fonts/Shabnam-Medium-FD.eot") format("eot"),
+    url("/fonts/Shabnam-Medium-FD.ttf") format("truetype"),
+    url("/fonts/Shabnam-Medium-FD.woff") format("woff");
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
 }

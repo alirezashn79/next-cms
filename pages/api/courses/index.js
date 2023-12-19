@@ -21,6 +21,8 @@ const handler = async (req, res) => {
         .status(500)
         .json({ message: "internal server error...!", data: err });
     }
+  } else if (req.method === "GET") {
+    return res.json({ message: "Hello" });
   }
 };
 export default handler;
