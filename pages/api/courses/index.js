@@ -3,7 +3,17 @@ const { default: connectToDB } = require("@/utils/db");
 
 const handler = async (req, res) => {
   await connectToDB();
-  if (req.method === "POST") {
+  if (req.method === "GET") {
+    try {
+      const courses = await coursesModel.find();
+      return res.json({
+        message: "get all courses successfully :))",
+        data: courses,
+      });
+    } catch (err) {
+      return res.status(500).json({ message: "server error", data: err });
+    }
+  } else if (req.method === "POST") {
     try {
       const { title, price, teacher } = req.body;
 
@@ -21,8 +31,6 @@ const handler = async (req, res) => {
         .status(500)
         .json({ message: "internal server error...!", data: err });
     }
-  } else if (req.method === "GET") {
-    return res.json({ message: "Hello" });
   }
 };
 export default handler;

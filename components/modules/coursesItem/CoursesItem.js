@@ -5,7 +5,7 @@ import styles from "@/styles/Course.module.css";
 import Swal from "sweetalert2";
 import { rialToNumber } from "@/utils/utils";
 const CoursesItem = (props) => {
-  const { _id, title } = props;
+  const { _id, title, getCourses } = props;
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -26,6 +26,7 @@ const CoursesItem = (props) => {
         text: data.data.title,
         confirmButtonText: "اوکی!",
       });
+      await getCourses();
     } else {
       Swal.fire({
         icon: "error",
@@ -57,6 +58,7 @@ const CoursesItem = (props) => {
           title: "دوره مورد نظر با موفقیت آپدیت شد",
           confirmButtonText: "اوکی",
         });
+        await getCourses();
       } else {
         Swal.fire({
           icon: "error",
