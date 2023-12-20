@@ -6,11 +6,11 @@ const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       // check search or get all
-      if (!!req.query.search) {
-        const { search } = req.query;
+      if (!!req.query.q) {
+        const { q } = req.query;
 
         const filteredCourses = await coursesModel.find({
-          title: { $regex: search },
+          title: { $regex: q },
         });
         return res.json(filteredCourses);
       } else {

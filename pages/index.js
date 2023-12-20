@@ -2,7 +2,7 @@ import Course from "@/components/templates/index/Course";
 import connectToDB from "@/utils/db";
 import coursesModel from "@/models/course";
 
-const index = ({ courses }) => {
+const IndexPage = ({ courses }) => {
   return <Course courses={courses} />;
 };
 
@@ -19,4 +19,4 @@ export const getStaticProps = async (context) => {
   };
 };
 
-export default index;
+export default IndexPage;
