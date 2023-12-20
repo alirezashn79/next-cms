@@ -12,15 +12,22 @@ const Navbar = () => {
   const router = useRouter();
 
   // useEffect(() => {
+  //   setSearch(() => {
+  //     return router.query.q;
+  //   });
   //   if (!!search.trim()) {
   //     router.push({
   //       pathname: "/search",
-  //       query: { search },
+  //       query: { q: search },
   //     });
   //   } else {
   //     router.push("/");
   //   }
   // }, [search]);
+
+  useEffect(() => {
+    setSearch(router.query.q);
+  }, [search]);
 
   const searchHandler = async () => {
     if (!!search.trim()) {

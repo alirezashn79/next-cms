@@ -1,7 +1,7 @@
 import CoursesItem from "@/components/modules/coursesItem/CoursesItem";
 import styles from "@/styles/Course.module.css";
 
-const Courses = () => {
+const Courses = ({ data }) => {
   return (
     <>
       <section className={styles.courses}>
@@ -9,10 +9,9 @@ const Courses = () => {
           <h2 className={styles.courses_title}>نتایج جستجو:</h2>
         </div>
         <ul className={styles.courses_list}>
-          {/* {data.map((course) => (
-            <CoursesItem key={course._id} getCourses={getCourses} {...course} />
-          ))} */}
-          <CoursesItem title="تستی" price="10" teacher="علی" />
+          {data.map((course) => (
+            <CoursesItem key={course._id} {...course} />
+          ))}
         </ul>
       </section>
     </>
