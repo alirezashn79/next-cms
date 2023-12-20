@@ -5,11 +5,21 @@ const handler = async (req, res) => {
   await connectToDB();
   if (req.method === "GET") {
     try {
-      const courses = await coursesModel.find();
-      return res.json({
-        message: "get all courses successfully :))",
-        data: courses,
-      });
+      // check search or get all
+      if (!!req.query.search) {
+        const { search } = req.query;
+
+        const filteredCourses = await coursesModel.find({
+          title: { $regex: search },
+        });
+        return res.json(filteredCourses);
+      } else {
+        const courses = await coursesModel.find({});
+        return res.json({
+          message: "get all courses successfully :))",
+          data: courses,
+        });
+      }
     } catch (err) {
       return res.status(500).json({ message: "server error", data: err });
     }
