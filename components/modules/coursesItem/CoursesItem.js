@@ -3,7 +3,9 @@ import EditModal from "@/components/templates/index/EditModal";
 import { useState } from "react";
 import styles from "@/styles/Course.module.css";
 import Swal from "sweetalert2";
-const CoursesItem = ({ title, _id }) => {
+import { rialToNumber } from "@/utils/utils";
+const CoursesItem = (props) => {
+  const { _id, title } = props;
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -30,6 +32,38 @@ const CoursesItem = ({ title, _id }) => {
         title: "خطا در حذف دوره",
         confirmButtonText: "اوکی!",
       });
+    }
+  };
+
+  const updateCourse = async (e, { title, price, teacher }) => {
+    e.preventDefault();
+    if (title.trim().length && price.trim().length && teacher.trim().length) {
+      const res = await fetch(`/api/courses/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          price: rialToNumber(price),
+          teacher,
+        }),
+      });
+
+      if (res.status === 200) {
+        hideEditModal();
+        Swal.fire({
+          icon: "success",
+          title: "دوره مورد نظر با موفقیت آپدیت شد",
+          confirmButtonText: "اوکی",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "خطا در آپدیت اطلاعات",
+          confirmButtonText: "اوکی",
+        });
+      }
     }
   };
 
@@ -63,7 +97,13 @@ const CoursesItem = ({ title, _id }) => {
           </a>
         </div>
       </li>
-      {showEditModal && <EditModal hideEditModal={hideEditModal} />}
+      {showEditModal && (
+        <EditModal
+          {...props}
+          updateCourseHandler={updateCourse}
+          hideEditModal={hideEditModal}
+        />
+      )}
       {showDeleteModal && (
         <DeleteModal
           deleteHandler={deleteCourse}
